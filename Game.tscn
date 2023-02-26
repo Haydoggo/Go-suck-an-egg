@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://nozzle.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Egg.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Flour.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 29.0689
@@ -35,3 +36,9 @@ position = Vector2( 296, 481 )
 
 [node name="Egg2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 752, 374 )
+
+[node name="Flour" parent="." instance=ExtResource( 4 )]
+position = Vector2( 474, 211 )
+
+[node name="Flour2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 578, 505 )

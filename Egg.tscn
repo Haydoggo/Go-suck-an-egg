@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/art/egg.png" type="Texture" id=1]
+[ext_resource path="res://food.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 36.2215
 
 [node name="Egg" type="Node2D" groups=["discrete"]]
+script = ExtResource( 2 )
 
 [node name="Egg" type="Sprite" parent="."]
 texture = ExtResource( 1 )
