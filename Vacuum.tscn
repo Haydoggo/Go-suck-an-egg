@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/vacuum.png" type="Texture" id=2]
+[ext_resource path="res://vacuum.gd" type="Script" id=3]
+
+[node name="Vacuum" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Batter" type="Sprite" parent="."]
+position = Vector2( 9, 35 )
+scale = Vector2( 1.188, 0.769 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -32 )
+
+[node name="Vacuum" type="Sprite" parent="."]
+texture = ExtResource( 2 )
