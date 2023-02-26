@@ -14,15 +14,18 @@ radius = 62.0725
 
 [node name="nozzle" type="Sprite" parent="."]
 position = Vector2( 86, 95 )
+z_index = 4096
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 
 [node name="Consume" type="Area2D" parent="nozzle"]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nozzle/Consume"]
 shape = SubResource( 1 )
 
 [node name="Suck" type="Area2D" parent="nozzle"]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nozzle/Suck"]
 shape = SubResource( 2 )
