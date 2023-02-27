@@ -6,14 +6,16 @@ var target_index = 0
 
 var animating = false
 
-func _ready() -> void:
-	pan_to_target(targets[0])
-	target_index = 1
-
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("tap") and not animating:
-		pan_to_target(targets[target_index % targets.size()])
-		target_index += 1
+		if target_index == targets.size():
+			get_tree().change_scene_to(preload("res://Game.tscn"))
+		else:
+			if not $Notes.visible:
+				$Notes.show()
+				create_tween().tween_property($Notes, "modulate", Color.white, 0.4)
+			pan_to_target(targets[target_index % targets.size()])
+			target_index += 1
 
 func pan_to_target(target : Position2D):
 	animating = true

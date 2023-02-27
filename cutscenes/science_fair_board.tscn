@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/art/science_fair_board_bg.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/hypothesis.png" type="Texture" id=2]
 [ext_resource path="res://assets/art/question.png" type="Texture" id=3]
 [ext_resource path="res://cutscenes/science_fair_board.gd" type="Script" id=4]
 [ext_resource path="res://assets/art/method.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/tile.png" type="Texture" id=6]
+[ext_resource path="res://assets/Mynerve-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://cutscenes/theme.tres" type="Theme" id=8]
+[ext_resource path="res://cutscenes/Splash.gd" type="Script" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
 
 [node name="ScienceFairBoard" type="Node2D"]
 script = ExtResource( 4 )
@@ -15,19 +25,24 @@ script = ExtResource( 4 )
 texture = ExtResource( 1 )
 centered = false
 
-[node name="Question" type="Sprite" parent="."]
+[node name="Notes" type="Node2D" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Question" type="Sprite" parent="Notes"]
 position = Vector2( 181, 181 )
 scale = Vector2( 0.333, 0.333 )
 texture = ExtResource( 3 )
 
-[node name="Hypothesis" type="Sprite" parent="."]
+[node name="Hypothesis" type="Sprite" parent="Notes"]
 position = Vector2( 182, 381 )
 scale = Vector2( 0.333, 0.333 )
 texture = ExtResource( 2 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 512, 300 )
-current = true
+[node name="Method" type="Sprite" parent="Notes"]
+position = Vector2( 519, 292 )
+scale = Vector2( 0.333, 0.333 )
+texture = ExtResource( 5 )
 
 [node name="CameraTargets" type="Node2D" parent="."]
 
@@ -43,7 +58,43 @@ scale = Vector2( 0.333, 0.333 )
 position = Vector2( 525, 296 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="Method" type="Sprite" parent="."]
-position = Vector2( 519, 292 )
-scale = Vector2( 0.333, 0.333 )
-texture = ExtResource( 5 )
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+theme = ExtResource( 8 )
+texture = ExtResource( 6 )
+stretch_mode = 2
+script = ExtResource( 9 )
+
+[node name="Intro" type="Label" parent="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.5
+margin_top = -99.0
+margin_right = 418.5
+margin_bottom = 99.0
+custom_fonts/font = SubResource( 1 )
+text = "Oh No! The Science fair is tomorrow, and you haven't prepared anything! You'd better come up with something quickly!"
+autowrap = true
+
+[node name="NextDay" type="Label" parent="TextureRect"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.5
+margin_top = -99.0
+margin_right = 418.5
+margin_bottom = 99.0
+custom_fonts/font = SubResource( 1 )
+text = "The Next day..."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 300 )
+current = true
