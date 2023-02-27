@@ -51,10 +51,50 @@ position = Vector2( 296, 481 )
 position = Vector2( 752, 374 )
 
 [node name="Flour" parent="." instance=ExtResource( 4 )]
-position = Vector2( 474, 211 )
+position = Vector2( 489, 317 )
 
 [node name="Flour2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 578, 505 )
 
 [node name="Vacuum" parent="." instance=ExtResource( 6 )]
 position = Vector2( 64, 331 )
+
+[node name="Ratio" type="HBoxContainer" parent="."]
+margin_left = 324.0
+margin_top = 45.0
+margin_right = 681.0
+margin_bottom = 107.0
+
+[node name="Egg" type="ColorRect" parent="Ratio"]
+margin_right = 68.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+color = Color( 0.909804, 0.752941, 0.141176, 1 )
+
+[node name="Flour" type="ColorRect" parent="Ratio"]
+margin_left = 72.0
+margin_right = 140.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+color = Color( 0.886275, 0.886275, 0.886275, 1 )
+
+[node name="Cocoa" type="ColorRect" parent="Ratio"]
+margin_left = 144.0
+margin_right = 212.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+color = Color( 0.313726, 0.254902, 0.192157, 1 )
+
+[node name="Sugar" type="ColorRect" parent="Ratio"]
+margin_left = 216.0
+margin_right = 284.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+color = Color( 0.733333, 0.623529, 0.509804, 1 )
+
+[node name="Vanilla" type="ColorRect" parent="Ratio"]
+margin_left = 288.0
+margin_right = 357.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+color = Color( 0.454902, 0.384314, 0.290196, 1 )
