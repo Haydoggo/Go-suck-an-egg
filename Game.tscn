@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://nozzle.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/nozzle.png" type="Texture" id=2]
@@ -7,12 +7,13 @@
 [ext_resource path="res://assets/art/hose_piece.png" type="Texture" id=5]
 [ext_resource path="res://Vacuum.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ratio.gd" type="Script" id=7]
+[ext_resource path="res://Sugar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Cocoa.tscn" type="PackedScene" id=9]
+[ext_resource path="res://icon.png" type="Texture" id=10]
+[ext_resource path="res://empty_bar.gd" type="Script" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 29.0689
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 62.0725
+radius = 21.0238
 
 [node name="Game" type="Node2D"]
 
@@ -32,8 +33,10 @@ shape = SubResource( 1 )
 [node name="Suck" type="Area2D" parent="nozzle"]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="nozzle/Suck"]
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="nozzle/Suck"]
+position = Vector2( 4.14191, 1.81875 )
+scale = Vector2( 0.947304, 0.876275 )
+polygon = PoolVector2Array( -54, -34, -1, 0, 48, -34, 30, -47, 3, -49, -22, -48, -42, -43 )
 
 [node name="TextureRect" type="TextureRect" parent="nozzle"]
 show_behind_parent = true
@@ -58,7 +61,15 @@ position = Vector2( 489, 317 )
 position = Vector2( 578, 505 )
 
 [node name="Vacuum" parent="." instance=ExtResource( 6 )]
-position = Vector2( 64, 331 )
+position = Vector2( 112, 326 )
+
+[node name="EmptyBar" type="ColorRect" parent="."]
+margin_left = 325.0
+margin_top = 45.0
+margin_right = 680.0
+margin_bottom = 107.0
+color = Color( 0.0431373, 0.184314, 0.364706, 1 )
+script = ExtResource( 11 )
 
 [node name="Ratio" type="HBoxContainer" parent="."]
 margin_left = 324.0
@@ -73,12 +84,36 @@ margin_bottom = 62.0
 size_flags_horizontal = 3
 color = Color( 0.909804, 0.752941, 0.141176, 1 )
 
+[node name="Label" type="Label" parent="Ratio/Egg"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Egg"
+align = 1
+
 [node name="Flour" type="ColorRect" parent="Ratio"]
 margin_left = 72.0
 margin_right = 140.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 color = Color( 0.886275, 0.886275, 0.886275, 1 )
+
+[node name="Label" type="Label" parent="Ratio/Flour"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Flour"
+align = 1
 
 [node name="Cocoa" type="ColorRect" parent="Ratio"]
 margin_left = 144.0
@@ -87,6 +122,18 @@ margin_bottom = 62.0
 size_flags_horizontal = 3
 color = Color( 0.313726, 0.254902, 0.192157, 1 )
 
+[node name="Label" type="Label" parent="Ratio/Cocoa"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Cocoa"
+align = 1
+
 [node name="Sugar" type="ColorRect" parent="Ratio"]
 margin_left = 216.0
 margin_right = 284.0
@@ -94,9 +141,130 @@ margin_bottom = 62.0
 size_flags_horizontal = 3
 color = Color( 0.733333, 0.623529, 0.509804, 1 )
 
+[node name="Label" type="Label" parent="Ratio/Sugar"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Sugar"
+align = 1
+
 [node name="Vanilla" type="ColorRect" parent="Ratio"]
 margin_left = 288.0
 margin_right = 357.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 color = Color( 0.454902, 0.384314, 0.290196, 1 )
+
+[node name="Label" type="Label" parent="Ratio/Vanilla"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Vanilla"
+align = 1
+
+[node name="Sugar" parent="." instance=ExtResource( 8 )]
+position = Vector2( 627, 386 )
+
+[node name="Cocoa" parent="." instance=ExtResource( 9 )]
+position = Vector2( 375, 391 )
+
+[node name="Cocoa2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 398, 426 )
+
+[node name="Sugar2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 342, 427 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 325.0
+margin_top = 19.0
+margin_right = 681.0
+margin_bottom = 44.0
+
+[node name="Egg" type="Control" parent="HBoxContainer"]
+margin_right = 57.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.83
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Egg"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -10.0
+margin_right = 10.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 10, 10 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 1
+
+[node name="Flour" type="Control" parent="HBoxContainer"]
+margin_left = 61.0
+margin_right = 172.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.61
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Flour"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -10.0
+margin_right = 10.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 10, 10 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 1
+
+[node name="Cocoa" type="Control" parent="HBoxContainer"]
+margin_left = 176.0
+margin_right = 239.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.91
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Cocoa"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -10.0
+margin_right = 10.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 10, 10 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 1
+
+[node name="Sugar" type="Control" parent="HBoxContainer"]
+margin_left = 243.0
+margin_right = 331.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( -297, 20 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.26
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Sugar"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -10.0
+margin_right = 10.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 10, 10 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 1
+
+[node name="Vanillia" type="Control" parent="HBoxContainer"]
+margin_left = 335.0
+margin_right = 356.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3

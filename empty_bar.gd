@@ -1,11 +1,9 @@
-extends Node2D
+extends ColorRect
 
 
 # Declare member variables here. Examples:
-var scale_speed = 200
-
-var max_fill = 5
-var fullness = 0
+# var a = 2
+# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,9 +13,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var total_food = 0.0
+	var total_sucked = 0
 	for amount_of_food in Global.suckitude.values():
-		total_food += amount_of_food
-	fullness = total_food / max_fill
-	get_node("Batter").rect_scale = (Vector2(1, fullness))
-	get_node("Label").text = str(fullness)
+		total_sucked += amount_of_food
+	if total_sucked > 0:
+		hide()
+
+		

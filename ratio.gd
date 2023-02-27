@@ -20,7 +20,8 @@ func set_ratio_bar():
 
 	# make that number the stretch value or whatever it is of the bar
 	if total_sucked == 0:
-		pass
+		for food in ratio_bar_dict.keys():
+			ratio_bar_dict[food].hide()
 	else:
 		# get the ratio of each ingredient
 		var ratio_dict = {
@@ -31,7 +32,13 @@ func set_ratio_bar():
 			"vanilla": Global.suckitude["vanilla"] / total_sucked
 			}
 		for food in ratio_bar_dict.keys():
+			ratio_bar_dict[food].show()
 			ratio_bar_dict[food].size_flags_stretch_ratio = ratio_dict[food]
+			var label = ratio_bar_dict[food].get_node("Label")
+			if ratio_dict[food] == 0:
+				label.hide()
+			else:
+				label.show()
 	
 	
 # Called when the node enters the scene tree for the first time.
