@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://nozzle.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/nozzle.png" type="Texture" id=2]
@@ -6,16 +6,24 @@
 [ext_resource path="res://Flour.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/art/hose_piece.png" type="Texture" id=5]
 [ext_resource path="res://Vacuum.tscn" type="PackedScene" id=6]
-[ext_resource path="res://ratio.gd" type="Script" id=7]
+[ext_resource path="res://display_bar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sugar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Cocoa.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/art/marker.png" type="Texture" id=10]
-[ext_resource path="res://empty_bar.gd" type="Script" id=11]
+[ext_resource path="res://Game.gd" type="Script" id=10]
+[ext_resource path="res://vanilla.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/art/kitchen_bench.png" type="Texture" id=12]
+[ext_resource path="res://assets/audio/egg_suck.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/audio/sugar_suck_1.wav" type="AudioStream" id=14]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 21.0
 
 [node name="Game" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="KitchenBench" type="Sprite" parent="."]
+texture = ExtResource( 12 )
+centered = false
 
 [node name="nozzle" type="Sprite" parent="."]
 position = Vector2( 85, -3 )
@@ -48,223 +56,84 @@ rect_scale = Vector2( 0.794, 1 )
 texture = ExtResource( 5 )
 stretch_mode = 2
 
-[node name="Egg" parent="." instance=ExtResource( 3 )]
-position = Vector2( 296, 481 )
+[node name="Shlorp" type="AudioStreamPlayer" parent="nozzle"]
+stream = ExtResource( 13 )
 
-[node name="Egg2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 752, 374 )
-
-[node name="Flour" parent="." instance=ExtResource( 4 )]
-position = Vector2( 489, 317 )
-
-[node name="Flour2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 578, 505 )
+[node name="Shlonk" type="AudioStreamPlayer" parent="nozzle"]
+stream = ExtResource( 14 )
 
 [node name="Vacuum" parent="." instance=ExtResource( 6 )]
 position = Vector2( 112, 326 )
 
-[node name="EmptyBar" type="ColorRect" parent="."]
-margin_left = 325.0
-margin_top = 45.0
-margin_right = 680.0
-margin_bottom = 107.0
-color = Color( 0.0431373, 0.184314, 0.364706, 1 )
-script = ExtResource( 11 )
+[node name="DisplayBar" parent="." instance=ExtResource( 7 )]
 
-[node name="Ratio" type="HBoxContainer" parent="."]
-margin_left = 324.0
-margin_top = 45.0
-margin_right = 681.0
-margin_bottom = 107.0
-script = ExtResource( 7 )
+[node name="Food" type="YSort" parent="."]
 
-[node name="Egg" type="ColorRect" parent="Ratio"]
-margin_right = 68.0
-margin_bottom = 62.0
-size_flags_horizontal = 3
-color = Color( 0.909804, 0.752941, 0.141176, 1 )
+[node name="Sugar" parent="Food" instance=ExtResource( 8 )]
+position = Vector2( 576, 364 )
 
-[node name="Label" type="Label" parent="Ratio/Egg"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = 10.0
-margin_right = 20.0
-margin_bottom = 14.0
-text = "Egg"
-align = 1
+[node name="Sugar3" parent="Food" instance=ExtResource( 8 )]
+position = Vector2( 650, 262 )
 
-[node name="Flour" type="ColorRect" parent="Ratio"]
-margin_left = 72.0
-margin_right = 140.0
-margin_bottom = 62.0
-size_flags_horizontal = 3
-color = Color( 0.886275, 0.886275, 0.886275, 1 )
+[node name="Sugar4" parent="Food" instance=ExtResource( 8 )]
+position = Vector2( 709, 432 )
 
-[node name="Label" type="Label" parent="Ratio/Flour"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = 10.0
-margin_right = 20.0
-margin_bottom = 14.0
-text = "Flour"
-align = 1
+[node name="Sugar5" parent="Food" instance=ExtResource( 8 )]
+position = Vector2( 258, 357 )
 
-[node name="Cocoa" type="ColorRect" parent="Ratio"]
-margin_left = 144.0
-margin_right = 212.0
-margin_bottom = 62.0
-size_flags_horizontal = 3
-color = Color( 0.313726, 0.254902, 0.192157, 1 )
-
-[node name="Label" type="Label" parent="Ratio/Cocoa"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = 10.0
-margin_right = 20.0
-margin_bottom = 14.0
-text = "Cocoa"
-align = 1
-
-[node name="Sugar" type="ColorRect" parent="Ratio"]
-margin_left = 216.0
-margin_right = 284.0
-margin_bottom = 62.0
-size_flags_horizontal = 3
-color = Color( 0.733333, 0.623529, 0.509804, 1 )
-
-[node name="Label" type="Label" parent="Ratio/Sugar"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = 10.0
-margin_right = 20.0
-margin_bottom = 14.0
-text = "Sugar"
-align = 1
-
-[node name="Vanilla" type="ColorRect" parent="Ratio"]
-margin_left = 288.0
-margin_right = 357.0
-margin_bottom = 62.0
-size_flags_horizontal = 3
-color = Color( 0.454902, 0.384314, 0.290196, 1 )
-
-[node name="Label" type="Label" parent="Ratio/Vanilla"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = 10.0
-margin_right = 20.0
-margin_bottom = 14.0
-text = "Vanilla"
-align = 1
-
-[node name="Sugar" parent="." instance=ExtResource( 8 )]
-position = Vector2( 627, 386 )
-
-[node name="Cocoa" parent="." instance=ExtResource( 9 )]
+[node name="Cocoa" parent="Food" instance=ExtResource( 9 )]
 position = Vector2( 375, 391 )
 
-[node name="Cocoa2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 398, 426 )
+[node name="Cocoa2" parent="Food" instance=ExtResource( 9 )]
+position = Vector2( 740, 311 )
 
-[node name="Sugar2" parent="." instance=ExtResource( 8 )]
+[node name="Sugar2" parent="Food" instance=ExtResource( 8 )]
 position = Vector2( 342, 427 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 325.0
-margin_top = 19.0
-margin_right = 681.0
-margin_bottom = 44.0
+[node name="Egg" parent="Food" instance=ExtResource( 3 )]
+position = Vector2( 405, 281 )
 
-[node name="Egg" type="Control" parent="HBoxContainer"]
-margin_right = 58.0
-margin_bottom = 25.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
+[node name="Egg3" parent="Food" instance=ExtResource( 3 )]
+position = Vector2( 449, 314 )
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Egg"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -10.0
-margin_right = 10.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 10, 10 )
-texture = ExtResource( 10 )
-expand = true
-stretch_mode = 1
+[node name="Egg4" parent="Food" instance=ExtResource( 3 )]
+position = Vector2( 748, 233 )
 
-[node name="Flour" type="Control" parent="HBoxContainer"]
-margin_left = 62.0
-margin_right = 197.0
-margin_bottom = 25.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 4.6
+[node name="Egg2" parent="Food" instance=ExtResource( 3 )]
+position = Vector2( 752, 374 )
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Flour"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -10.0
-margin_right = 10.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 10, 10 )
-texture = ExtResource( 10 )
-expand = true
-stretch_mode = 1
+[node name="Flour" parent="Food" instance=ExtResource( 4 )]
+position = Vector2( 476, 274 )
 
-[node name="Cocoa" type="Control" parent="HBoxContainer"]
-margin_left = 201.0
-margin_right = 251.0
-margin_bottom = 25.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.7
+[node name="Flour3" parent="Food" instance=ExtResource( 4 )]
+position = Vector2( 466, 414 )
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Cocoa"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -10.0
-margin_right = 10.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 10, 10 )
-texture = ExtResource( 10 )
-expand = true
-stretch_mode = 1
+[node name="Flour4" parent="Food" instance=ExtResource( 4 )]
+position = Vector2( 366, 355 )
 
-[node name="Sugar" type="Control" parent="HBoxContainer"]
-margin_left = 255.0
-margin_right = 343.0
-margin_bottom = 25.0
-rect_pivot_offset = Vector2( -297, 20 )
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
+[node name="Flour5" parent="Food" instance=ExtResource( 4 )]
+position = Vector2( 599, 310 )
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Sugar"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -10.0
-margin_right = 10.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 10, 10 )
-texture = ExtResource( 10 )
-expand = true
-stretch_mode = 1
+[node name="Flour6" parent="Food" instance=ExtResource( 4 )]
+position = Vector2( 562, 253 )
 
-[node name="Vanillia" type="Control" parent="HBoxContainer"]
-margin_left = 347.0
-margin_right = 356.0
-margin_bottom = 25.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
+[node name="Flour7" parent="Food" instance=ExtResource( 4 )]
+position = Vector2( 653, 355 )
+
+[node name="Flour8" parent="Food" instance=ExtResource( 4 )]
+position = Vector2( 664, 316 )
+
+[node name="Flour2" parent="Food" instance=ExtResource( 4 )]
+position = Vector2( 578, 505 )
+
+[node name="Flour9" parent="Food" instance=ExtResource( 11 )]
+position = Vector2( 530, 318 )
+
+[node name="Flour10" parent="Food" instance=ExtResource( 11 )]
+position = Vector2( 692, 274 )
+
+[node name="Flour11" parent="Food" instance=ExtResource( 11 )]
+position = Vector2( 631, 415 )
+
+[node name="Flour12" parent="Food" instance=ExtResource( 11 )]
+position = Vector2( 292, 399 )

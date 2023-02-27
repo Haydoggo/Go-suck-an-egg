@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sucks to Cook Music - 27_02_23, 10.28 PM.mp3-6624196da22448ea32e167742a432468.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Sucks to Cook Music - 27_02_23, 10.28 PM.mp3"
+dest_files=[ "res://.import/Sucks to Cook Music - 27_02_23, 10.28 PM.mp3-6624196da22448ea32e167742a432468.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

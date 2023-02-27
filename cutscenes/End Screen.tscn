@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/art/science_fair_board_bg.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/question.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/method.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/hypothesis.png" type="Texture" id=4]
+[ext_resource path="res://cutscenes/end_screen.gd" type="Script" id=5]
+[ext_resource path="res://assets/art/bad_cake.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/cake_ish.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/good_cake.png" type="Texture" id=8]
+[ext_resource path="res://cutscenes/theme.tres" type="Theme" id=9]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="ScienceFairBoardBg" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Notes" type="Node2D" parent="."]
+
+[node name="Question" type="Sprite" parent="Notes"]
+position = Vector2( 181, 181 )
+scale = Vector2( 0.333, 0.333 )
+texture = ExtResource( 2 )
+
+[node name="Hypothesis" type="Sprite" parent="Notes"]
+position = Vector2( 182, 381 )
+scale = Vector2( 0.333, 0.333 )
+texture = ExtResource( 4 )
+
+[node name="Method" type="Sprite" parent="Notes"]
+position = Vector2( 519, 292 )
+scale = Vector2( 0.333, 0.333 )
+texture = ExtResource( 3 )
+
+[node name="Result" type="Node2D" parent="."]
+position = Vector2( 866, 300 )
+scale = Vector2( 0.333, 0.333 )
+
+[node name="BadCake" type="Sprite" parent="Result"]
+visible = false
+texture = ExtResource( 6 )
+
+[node name="CakeIsh" type="Sprite" parent="Result"]
+visible = false
+texture = ExtResource( 7 )
+
+[node name="GoodCake" type="Sprite" parent="Result"]
+visible = false
+texture = ExtResource( 8 )
+
+[node name="Position2D" type="Position2D" parent="Result"]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 300 )
+current = true
+
+[node name="LinkButton" type="Button" parent="."]
+margin_left = 798.0
+margin_top = 399.0
+margin_right = 902.0
+margin_bottom = 432.0
+theme = ExtResource( 9 )
+text = "Play Again"
+
+[connection signal="pressed" from="LinkButton" to="." method="_on_LinkButton_pressed"]

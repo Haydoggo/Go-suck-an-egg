@@ -7,6 +7,7 @@
 radius = 29.6142
 
 [node name="Sugar" type="Node2D" groups=["discrete"]]
+modulate = Color( 0.807843, 0.709804, 0.627451, 1 )
 script = ExtResource( 2 )
 
 [node name="SugarCubes" type="Sprite" parent="."]

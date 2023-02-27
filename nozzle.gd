@@ -25,6 +25,7 @@ func suckle_from_the_continuous_teat(food, speed, delta):
 
 
 func check_score():
+	Global.score = 0
 	for food in Global.suckitude.keys():
 		Global.score += abs(Global.goal_score[food] - Global.suckitude[food])
 	
@@ -47,6 +48,10 @@ func _process(delta):
 		if food.is_in_group("discrete"):
 			food.position = food.position.move_toward(position, consume_speed*delta)
 			if food.position == position:
+				if food.type == "egg":
+					$Shlorp.play()
+				else:
+					$Shlonk.play()
 				food.queue_free()
 				Global.suckitude[food.type] += 1
 		else:

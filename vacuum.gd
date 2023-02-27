@@ -4,7 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 var scale_speed = 200
 
-var max_fill = 5
+var max_fill = 11.6
 var fullness = 0
 
 
@@ -20,4 +20,6 @@ func _process(delta):
 		total_food += amount_of_food
 	fullness = total_food / max_fill
 	get_node("Batter").rect_scale = (Vector2(1, fullness))
-	get_node("Label").text = str(fullness)
+	get_node("Label").text = "%.2f%%" % (fullness*100)
+	if fullness >= 1.0:
+		get_tree().change_scene_to(preload("res://cutscenes/End Screen.tscn"))
