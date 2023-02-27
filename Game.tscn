@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://nozzle.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/nozzle.png" type="Texture" id=2]
 [ext_resource path="res://Egg.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Flour.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Vacuum.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/art/hose_piece.png" type="Texture" id=5]
+[ext_resource path="res://Vacuum.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 29.0689
@@ -33,6 +34,16 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nozzle/Suck"]
 shape = SubResource( 2 )
 
+[node name="TextureRect" type="TextureRect" parent="nozzle"]
+show_behind_parent = true
+margin_left = -24.0
+margin_top = 193.0
+margin_right = 40.0
+margin_bottom = 1176.0
+rect_scale = Vector2( 0.794, 1 )
+texture = ExtResource( 5 )
+stretch_mode = 2
+
 [node name="Egg" parent="." instance=ExtResource( 3 )]
 position = Vector2( 296, 481 )
 
@@ -45,5 +56,5 @@ position = Vector2( 474, 211 )
 [node name="Flour2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 578, 505 )
 
-[node name="Vacuum" parent="." instance=ExtResource( 5 )]
+[node name="Vacuum" parent="." instance=ExtResource( 6 )]
 position = Vector2( 64, 331 )
