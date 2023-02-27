@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://nozzle.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/nozzle.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Flour.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/art/hose_piece.png" type="Texture" id=5]
 [ext_resource path="res://Vacuum.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ratio.gd" type="Script" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 29.0689
@@ -64,6 +65,7 @@ margin_left = 324.0
 margin_top = 45.0
 margin_right = 681.0
 margin_bottom = 107.0
+script = ExtResource( 7 )
 
 [node name="Egg" type="ColorRect" parent="Ratio"]
 margin_right = 68.0

@@ -8,19 +8,23 @@ var continuous_suck_speed = 50
 var consume_speed = 500
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 	
 
 func suckle_from_the_continuous_teat(food, speed, delta):
-	var amount_smaller = (speed*delta)/100
+	var amount_smaller = (speed*delta) / 100
 	food.scale = food.scale.move_toward(Vector2(0, 0), amount_smaller)
 	Global.suckitude[food.type] += amount_smaller
 	food.size -= amount_smaller
 	if food.size <= 0:
 		print("trying to destroy continuous food")
 		food.queue_free()
+
+
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
