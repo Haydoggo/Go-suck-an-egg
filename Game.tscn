@@ -9,11 +9,11 @@
 [ext_resource path="res://ratio.gd" type="Script" id=7]
 [ext_resource path="res://Sugar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Cocoa.tscn" type="PackedScene" id=9]
-[ext_resource path="res://icon.png" type="Texture" id=10]
+[ext_resource path="res://assets/art/marker.png" type="Texture" id=10]
 [ext_resource path="res://empty_bar.gd" type="Script" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 21.0238
+radius = 21.0
 
 [node name="Game" type="Node2D"]
 
