@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/art/science_fair_board_bg.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/hypothesis.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/question.png" type="Texture" id=3]
+[ext_resource path="res://cutscenes/science_fair_board.gd" type="Script" id=4]
+[ext_resource path="res://assets/art/method.png" type="Texture" id=5]
+
+[node name="ScienceFairBoard" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ScienceFairBoardBg" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Question" type="Sprite" parent="."]
+position = Vector2( 181, 181 )
+scale = Vector2( 0.333, 0.333 )
+texture = ExtResource( 3 )
+
+[node name="Hypothesis" type="Sprite" parent="."]
+position = Vector2( 182, 381 )
+scale = Vector2( 0.333, 0.333 )
+texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 300 )
+current = true
+
+[node name="CameraTargets" type="Node2D" parent="."]
+
+[node name="Question" type="Position2D" parent="CameraTargets"]
+position = Vector2( 170, 172 )
+scale = Vector2( 0.333, 0.333 )
+
+[node name="Hypothesis" type="Position2D" parent="CameraTargets"]
+position = Vector2( 170, 368 )
+scale = Vector2( 0.333, 0.333 )
+
+[node name="Method" type="Position2D" parent="CameraTargets"]
+position = Vector2( 525, 296 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Method" type="Sprite" parent="."]
+position = Vector2( 519, 292 )
+scale = Vector2( 0.333, 0.333 )
+texture = ExtResource( 5 )
