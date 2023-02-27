@@ -24,11 +24,15 @@ func suckle_from_the_continuous_teat(food, speed, delta):
 		food.queue_free()
 
 
+func check_score():
+	for food in Global.suckitude.keys():
+		Global.score += abs(Global.goal_score[food] - Global.suckitude[food])
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	check_score()
 	position = position.move_toward(get_global_mouse_position(), nozzle_speed*delta)
 	
 	for area in get_node("Suck").get_overlapping_areas():

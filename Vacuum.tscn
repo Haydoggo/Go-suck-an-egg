@@ -32,7 +32,3 @@ margin_bottom = 1026.0
 rect_scale = Vector2( 0.794, 1 )
 texture = ExtResource( 4 )
 stretch_mode = 2
-
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
